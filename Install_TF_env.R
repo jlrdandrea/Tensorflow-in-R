@@ -9,35 +9,33 @@ library(tensorflow)
 library(keras)
 
 # Install Miniconda
-# reticulate::install_miniconda()
+reticulate::virtualenv_install()
 
 # Install Python
-reticulate::conda_create(
-  envname = "r-conda-env", 
+reticulate::virtualenv_create(
+  envname = "r-env", 
   packages = "python==3.12.3"
 )
 
 # Install Tensorflow
 tensorflow::install_tensorflow(
-  method = "conda", 
-  conda = reticulate::conda_binary("auto"), 
-  envname = "r-conda-env", 
-  version = "nightly-cpu"
+  method = "env", 
+  envname = "r-env", 
+  version = "2.16"
 )
 
 keras::install_keras(
-  method = "conda",
-  conda = reticulate::conda_binary("auto"),
-  tensorflow = "nightly-cpu"
+  method = "env",
+  tensorflow = "2.16"
 )
 
 # Select the rnvironment for tensorflow
-tensorflow::use_condaenv("r-conda-env")
+tensorflow::use_virtualenv("r-env")
 
 # Check the instalation
 tensorflow::tf_config()
 reticulate::py_config()
 
-reticulate::conda_list()
-#conda_remove("r-conda-env")
+virtualenv_list()
+# virtualenv_remove("r-env")
 
