@@ -55,8 +55,8 @@ plot(history)
 
 score_train <- model %>% evaluate(x_train, y_train, verbose = 2)
 
-cat('Train loss:', score_train["loss"], "\n")
-cat('Train accuracy:', score_train["accuracy"], "\n")
+#cat('Train loss:', score_train["loss"], "\n")
+#cat('Train accuracy:', score_train["accuracy"], "\n")
 
 # Model Evaluation
 
@@ -67,8 +67,7 @@ predictions <- model %>%
 predictions
 
 # Evaluate
-y=actual
-y_hat=predicted
+
 eval_df <- data.frame(
   actual = max.col(y_test),
   predicted = predictions
